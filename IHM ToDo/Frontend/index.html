@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Realizado por Angel Cedillo 4to Ciclo de Sowftware UCACUE-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="toDo.js"></script>
+</head>
+
+<body onload="showTasks()">
+    <div class="container">
+        <h1>Lista de tareas</h1>
+        <form action="#" method="post">
+            <div class="frm">
+                <dialog id="confirmDeleteDialog">
+                    <form method="dialog">
+                        <input type="hidden" id="idToDelete" value="">
+                        <h2> <span>&#9888;</span>¿Esta seguro que quiere</h1>
+                            <h2>eliminar el siguiente registro? <span>&#9888;</span></h1>
+                                <hr>
+                                <p>Tarea: <span id="span_name"></span></p>
+                                <p>Descripcion: <span id="span_description"></span></p>
+                                <p>Fecha: <span id="span_date"></span></p>
+                                <hr>
+                                <button id="confirmDeleteButton" type="submit" class="btn btn-danger">Eliminar</button>
+                                <button id="cancelDeleteButton" class="btn btn-light">Cancelar</button>
+                    </form>
+                </dialog>
+
+                <div>
+                    <dialog id="confirmUpdateDialog">
+                        <form method="dialog">
+                            <div class="modal-body">
+                                <h1>Modo de Edición <i class="fa fa-gear fa-spin"></i></h1>
+                                <hr>
+                                <input type="hidden" id="idToUpdate" value="">
+                                <p>Tarea:</p>
+                                <input type="text" id="update_name" class="form-control">
+                                <p>Descripcion:</p>
+                                <input type="text" id="update_description" class="form-control">
+                                <p>Fecha:</p>
+                                <input type="date" id="update_date" class="form-control">
+                                <hr>
+                                <button id="confirmUpdateButton" type="submit"
+                                    class="btn btn-success">Actualizar</button>
+                                <button id="cancelUpdateButton" class="btn btn-light">Cancelar</button>
+                            </div>
+                        </form>
+                    </dialog>
+                </div>
+
+                <input type="hidden" id="id" value="">
+                <input type="hidden" id="status" value="">
+                <div class="field">
+                    <label for="task_name">Tarea:</label>
+                    <input type="text" id="task_name" class="form-control">
+                </div>
+                <div class="field">
+                    <label for="task_description">Descripcion:</label>
+                    <input type="text" id="task_description" class="form-control">
+                </div>
+                <div class="field">
+                    <label for="task_date">Fecha:</label>
+                    <input type="date" id="task_date" class="form-control">
+                </div>
+                <input type="button" id="task_submit" value="Enviar" onclick="insert()" class="btn btn-primary">
+            </div>
+        </form>
+        <div>
+            <hr>
+
+            <h2>Lista de tareas a realizar:</h2>
+            <table class="table table-stripped" id="task_table">
+                
+                    <tr class="table-primary">
+                        <th>¿Listo?</th>
+                        <th>Tarea</th>
+                        <th>Descripcion</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
